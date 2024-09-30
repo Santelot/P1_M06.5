@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook-P1-M06.5</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: left;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .note {
+            background-color: #ffeb3b;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .nav-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+        .nav-buttons button:disabled {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-4').style.display = 'none';
+            }
+        }
+
+        function navigateTo(id) {
+            var element = document.getElementById(id);
+            window.scrollTo({
+                top: element.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</head>
+<body onload="updateActivities()">
+
+<div class="header">
+    <h1>Playbook-P1-M06.5</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+<!-- Actividad 0: Revisión Misión -->
+<div id="activity-0" class="activity">
+    <div class="banner" onclick="toggleContent('revision-mision')">
+        <div class="title">
+            <span>📝 Actividad 0: Revisión Misión (1 paso)</span>
+            <span>⏰ Tiempo: 1 minuto</span>
+        </div>
+        <div class="subtitle">Verificar los recursos y la preparación</div>
+        <div class="summary">Proyectar la diapositiva 1 "Materiales y Preparación" y verificar que todo esté listo para la misión.</div>
+    </div>
+    <div id="revision-mision" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 1 "Materiales y Preparación". Verificar que todos los recursos estén preparados.</div>
+            <div class="dialogue">"Voy a revisar que todas las computadoras estén encendidas y listas, que tengamos acceso al sitio web de puzzles, y que todo esté en orden antes de comenzar la misión."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 1: Saludo y Ritual Gnius Club -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo-ritual')">
+        <div class="title">
+            <span>👋 Actividad 1: Saludo y Ritual Gnius Club (4 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Saludo y preparación para la misión</div>
+        <div class="summary">Saludar a los estudiantes, revisar el estado de ánimo, realizar el ritual de agradecimiento y explicar los objetivos de la misión.</div>
+    </div>
+    <div id="saludo-ritual" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 2 "Bienvenidos, Genios". Saludar a los estudiantes de manera entusiasta y agradecida.</div>
+            <div class="dialogue">"¡Hola, Genios! ¡Qué gusto verlos! Hoy tenemos una misión divertida con puzzles en línea. ¡Vamos a pasarla genial aprendiendo juntos!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 3 "Estado de Ánimo". Preguntar a los estudiantes cómo se sienten antes de comenzar.</div>
+            <div class="dialogue">"¿Cómo se sienten hoy? Coloquen sus manos en la cabeza si se sienten emocionados, crucen sus brazos si están nerviosos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 4 "Ritual de Agradecimiento". Agradecer a los estudiantes por su esfuerzo y participación.</div>
+            <div class="dialogue">"Gracias por estar aquí y por su dedicación, Genios. ¡Es un placer aprender con ustedes!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Proyectar la diapositiva 5 "Objetivos de la Misión". Explicar claramente los objetivos de la clase.</div>
+            <div class="dialogue">"Hoy, nuestro objetivo es aprender a usar el mouse para completar puzzles en línea. ¡Vamos a aprender mientras nos divertimos!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 2: State Change -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state-change')">
+        <div class="title">
+            <span>🔄 Actividad 2: State Change (5 pasos)</span>
+            <span>⏰ Tiempo: 5 minutos</span>
+        </div>
+        <div class="subtitle">Ejercicio de Relajación y Preparación</div>
+        <div class="summary">Relajación visual para preparar a los estudiantes para el uso preciso del mouse.</div>
+    </div>
+    <div id="state-change" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (1 minuto): Proyectar la diapositiva 6 "State Change". Introducir la actividad de relajación y preparación.</div>
+            <div class="dialogue">"Antes de comenzar a aprender a usar el mouse, vamos a preparar nuestras mentes y nuestras manos para estar en modo de precisión."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar la diapositiva 7 "Parte 1". Guiar a los estudiantes a imaginar que tienen una mariposa en la punta de su dedo.</div>
+            <div class="dialogue">"Imaginen que tienen una mariposa posada en la punta de su dedo índice. Este ejercicio nos ayudará a mover nuestras manos suavemente, tal como lo haremos cuando movamos el mouse."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar la diapositiva 8 "Parte 2". Hacer que los estudiantes cierren los ojos y muevan el dedo haciendo círculos pequeños.</div>
+            <div class="dialogue">"Cierren los ojos e imaginen que la mariposa está en la punta de su dedo. Muevan el dedo en el aire, haciendo pequeños círculos. Hagan el movimiento despacio para que la mariposa no se vaya volando."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (1 minuto): Guiar en la tercera parte de la actividad. Repetir el ejercicio con la mano izquierda.</div>
+            <div class="dialogue">"Ahora vamos a cambiar de mano. Hagan el mismo ejercicio con la mano izquierda, moviendo el dedo suavemente en el aire, haciendo círculos pequeños."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar la diapositiva 9 "Finalizar la Actividad". Finalizar el ejercicio de relajación.</div>
+            <div class="dialogue">"Ahora abramos los ojos. Este ejercicio nos ayudó a coordinar nuestras manos y a controlar nuestros movimientos, algo muy importante cuando usamos el mouse. ¡Estamos listos para empezar a mover el cursor en la pantalla con precisión!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 3: Challenge -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">
+            <span>🎯 Actividad 3: Challenge (6 pasos)</span>
+            <span>⏰ Tiempo: 25 minutos</span>
+        </div>
+        <div class="subtitle">Completar Puzzles Usando el Mouse</div>
+        <div class="summary">Desafío para practicar el uso del mouse mientras se completan puzzles en línea.</div>
+    </div>
+    <div id="challenge" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 10 "Desafío: Completar Puzzles". Explicar el desafío y cómo utilizar el botón de girar en los puzzles.</div>
+            <div class="dialogue">"¡Genios, ahora viene el desafío! Vamos a completar diferentes puzzles en línea. Recuerden, en algunos puzzles tendrán que girar las piezas. El botón para girar las piezas está en la parte inferior izquierda de la pantalla."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 11 "Iniciar el Desafío". Guiar a los estudiantes para comenzar el desafío.</div>
+            <div class="dialogue">"Vamos a empezar. Abran el sitio web y seleccionen en el menú la palabra 'jugar'. ¡Recuerden usar el mouse con precisión! Tienen 25 minutos."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (25 minutos): Proyectar la diapositiva 12 "Challenge en Progreso". Supervisar la actividad y brindar ayuda si es necesario.</div>
+            <div class="dialogue">"¡Están haciendo un gran trabajo, Genios! Si necesitan girar una pieza, recuerden que el botón está en la parte inferior izquierda."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Guiar a los estudiantes para completar el puzzle.</div>
+            <div class="dialogue">"Tómense su tiempo para completar el puzzle. La precisión es clave, ¡ustedes pueden hacerlo!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (5 minutos): Proyectar la diapositiva 13 "Discusión de la Experiencia". Guiar a los estudiantes en la discusión sobre el uso del mouse.</div>
+            <div class="dialogue">"¡Excelente trabajo, Genios! ¿Cómo se sintieron usando el mouse para girar y mover las piezas? ¿Qué fue lo más desafiante?"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (0.5 minutos): Proyectar la diapositiva 14 "Revisión de Objetivos". Revisar lo que han logrado en el reto.</div>
+            <div class="dialogue">"Genios, hemos cumplido con dos de los objetivos de la misión. ¡Gran trabajo!"</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 4: Team Gnius -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('team-gnius')">
+        <div class="title">
+            <span>🤝 Actividad 4: Team Gnius (3 pasos)</span>
+            <span>⏰ Tiempo: 6 minutos</span>
+        </div>
+        <div class="subtitle">Formar equipos y discutir sobre la actividad</div>
+        <div class="summary">Trabajo en equipo para compartir resultados y reflexionar sobre los puzzles completados.</div>
+    </div>
+    <div id="team-gnius" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 15 "Formar Equipos". Guiar a los estudiantes en la formación de equipos.</div>
+            <div class="dialogue">"¡Es hora de compartir lo que hemos aprendido! Formemos equipos de 4 y discutamos cómo les fue con los puzzles. Tienen 30 segundos para decidir con quién van a trabajar."</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 16 "Temporizador - 30 Segundos". Permitir a los estudiantes organizarse en equipos.</div>
+            <div class="dialogue">—</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (5 minutos): Proyectar la diapositiva 17 "Compartir Resultados". Guiar a los estudiantes en la discusión dentro de los equipos.</div>
+            <div class="dialogue">"Cada equipo va a compartir cómo les fue con los puzzles. ¿Qué encontraron más fácil? ¿Qué fue un desafío? Cada uno comparta su experiencia con su equipo."</div>
+        </div>
+    </div>
+</div>
+<!-- Actividad 5: Honor de Dojo -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor-dojo')">
+        <div class="title">
+            <span>🏅 Actividad 5: Honor de Dojo (3 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Reflexión y celebración de logros</div>
+        <div class="summary">Revisión de los objetivos alcanzados y reconocimiento de los logros de los estudiantes.</div>
+    </div>
+    <div id="honor-dojo" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar la diapositiva 18 "Revisión de Objetivos". Hacer un repaso de los objetivos alcanzados durante la misión.</div>
+            <div class="dialogue">"¡Genios, antes de despedirnos, revisemos los objetivos que hemos logrado hoy! Usamos el mouse con precisión, trabajamos en equipo y completamos el reto. ¡Bien hecho!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar la diapositiva 19 "Reconocer y Celebrar". Felicitar a los estudiantes por sus logros.</div>
+            <div class="dialogue">"Estoy muy orgulloso de cada uno de ustedes por su esfuerzo y trabajo en equipo. ¡Bien hecho, Genios!"</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (3 minutos): Proyectar la diapositiva 20 "Orden y Respeto". Guiar a los estudiantes para recoger el lugar.</div>
+            <div class="dialogue">"Ahora, es importante que dejemos nuestro espacio limpio y ordenado para la siguiente clase. Por favor, recojan sus materiales y asegúrense de que todo esté en su lugar."</div>
+        </div>
+    </div>
+</div>
+</div> <!-- Cierre del container -->
+
+    <!-- Scripts adicionales si es necesario -->
+    <script>
+        // Agregar scripts adicionales aquí si es necesario
+    </script>
+
+    </body>
+    </html>
